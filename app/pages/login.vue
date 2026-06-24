@@ -33,6 +33,10 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+    middleware: 'auth'
+})
+
 //@ts-nocheck
 const config = useRuntimeConfig()
 declare global {
