@@ -1,4 +1,4 @@
-<!-- components/QrScanner.vue -->
+<!-- components/qr.vue -->
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
@@ -65,7 +65,7 @@ onUnmounted(() => {
   <div align="center">
     <h2>Scan from WebCam</h2>
     <p>Status: {{ status }}</p>
-    <video ref="video" style="width: 100%; max-width: 400px; background: #000;"></video>
+    <video ref="video" style="width: 100%; max-width: 450px; background: #000;"></video>
     <p>Camera: {{ hasCamera ? 'Yes' : 'No' }}</p>
     <p>QR: {{ result || 'None' }}</p>
     <button @click="start">Start</button>
