@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
+  css: ['leaflet/dist/leaflet.css'],
   vite: {
     plugins: [
       vuetify({ autoImport: true }),
