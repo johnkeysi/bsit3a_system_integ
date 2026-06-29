@@ -60,4 +60,5 @@ const logout = () => {
   window.google?.accounts.id.disableAutoSelect()
   navigateTo('/login')
 }
+
 </script>

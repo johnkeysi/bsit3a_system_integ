@@ -70,6 +70,5 @@ onUnmounted(() => {
     <p>QR: {{ result || 'None' }}</p>
     <button @click="start">Start</button>
     <button @click="stop">Stop</button>
-    <button v-if="hasFlash" @click="toggleFlash">Flash {{ isFlashOn ? 'OFF' : 'ON' }}</button>
   </div>
 </template>
