@@ -51,7 +51,7 @@ const currentWeather = ref(null)
 
 const getWeatherData = async () => {
   try {
-    const data = await $fetch('http://api.weatherapi.com/v1/current.json', {
+    const data = await $fetch('https://api.weatherapi.com/v1/current.json', {
       params: {
         key: 'f2fc432aa31e4ace86c32508262906',
         q: 'Manila',
