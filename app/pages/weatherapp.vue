@@ -2,7 +2,7 @@
   <div>
   <h1 >{{ currentWeather?.location?.name }}</h1>
   <h2>{{ currentWeather?.current?.temp_c }}C</h2>
-
+  <p class="cond">{{ currentWeather?.current?.condition?.text }}</p>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ const getWeatherData = async () => {
     })
     currentWeather.value = data
     console.log(data)
-  } catch (err) {
+  } catch (error) {
     console.error('Failed to fetch data', error)
   }
 }

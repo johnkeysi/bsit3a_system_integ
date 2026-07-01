@@ -44,11 +44,17 @@ definePageMeta({
   middleware: 'auth'
 })
 
+const config = useRuntimeConfig()
 const currentWeather = ref(null)
 
 const getWeatherData = async () => {
   try {
-    const data = await $fetch('http://api.weatherapi.com/v1/current.json?key=f2fc432aa31e4ace86c32508262906&q=Manila&aqi=no', {  
+    const data = await $fetch('http://api.weatherapi.com/v1/current.json', {
+      params: {
+        key: config.public.weatherApiKey,
+        q: 'Manila',
+        aqi: 'no'
+      }
     })
     currentWeather.value = data
     console.log(data)
