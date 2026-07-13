@@ -1,10 +1,8 @@
 <template>
   <v-container class="d-flex justify-center align-center" style="min-height: 100vh;">
     <v-card class="pa-6 text-center" max-width="600" elevation="1" rounded="lg">
-      <h2 class="text-h5 font-weight-medium mb-1">🤖 Object Detector</h2>
-      <p class="text-body-2 text-grey-darken-1 mb-4">
-        TensorFlow.js + COCO-SSD (90+ objects)
-      </p>
+      <h2 class="text-h5 font-weight-medium mb-1">Object Detector</h2>
+     
 
       <!-- Camera -->
       <div class="camera-wrapper mb-4">
@@ -51,30 +49,6 @@
           Switch
         </v-btn>
       </div>
-
-      <!-- Confidence -->
-      <v-slider
-        v-model="confidenceThreshold"
-        :min="0.1"
-        :max="0.9"
-        :step="0.05"
-        label="Min Confidence"
-        :thumb-label="true"
-        class="mb-4"
-        hide-details
-      >
-        <template #append>
-          <span class="text-body-2 font-weight-medium" style="min-width: 50px;">
-            {{ (confidenceThreshold * 100).toFixed(0) }}%
-          </span>
-        </template>
-      </v-slider>
-
-      <!-- FPS -->
-      <v-chip size="small" color="grey-darken-3" class="mb-4">
-        <v-icon size="16" start>mdi-speedometer</v-icon>
-        {{ fps }} FPS
-      </v-chip>
 
       <!-- Detected Objects -->
       <v-card v-if="filteredDetections.length > 0" variant="outlined" class="mb-4">

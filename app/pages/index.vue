@@ -22,8 +22,16 @@
             View Map
           </v-btn>
 
+          <v-btn variant="text" to="/weather" prepend-icon="mdi-weather-partly-cloudy" class="justify-start">
+            Weather
+          </v-btn>
+
           <v-btn variant="text" to="/qr" prepend-icon="mdi-qrcode-scan" class="justify-start">
             Scan QR
+          </v-btn>
+
+          <v-btn variant="text" to="/object-detector" prepend-icon="mdi-eye" class="justify-start">
+            Object Detector
           </v-btn>
 
           <v-divider class="my-2"></v-divider>
