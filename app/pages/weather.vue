@@ -26,17 +26,41 @@
         </div>
       </div>
 
-      <!-- Stats -->
-  
+      <!-- Error message if fetch fails -->
+      <div v-if="error" style="background: rgba(255,0,0,0.2); border-radius: 12px; padding: 12px; margin-bottom: 16px;">
+        <p style="color: darkred; margin: 0;">Failed to load weather. <button @click="fetchWeather" style="background: none; border: none; color: darkred; text-decoration: underline; cursor: pointer;">Retry</button></p>
+      </div>
+
+      <!-- Loading -->
+      <div v-if="loading" style="text-align: center; padding: 20px;">
+        <p>Loading weather...</p>
+      </div>
+
     </div>
   </div>
 </template>
 
 <script setup>
 const w = ref(null)
+const loading = ref(false)
+const error = ref(false)
 
-onMounted(async () => {
-  w.value = await $fetch('http://api.weatherapi.com/v1/forecast.json?key=f2fc432aa31e4ace86c32508262906&q=Manila&days=7&aqi=no&alerts=no')
+const fetchWeather = async () => {
+  loading.value = true
+  error.value = false
+  try {
+    // FIX: Changed http:// to https://
+    w.value = await $fetch('https://api.weatherapi.com/v1/forecast.json?key=f2fc432aa31e4ace86c32508262906&q=Manila&days=7&aqi=no&alerts=no')
+  } catch (err) {
+    console.error('Weather error:', err)
+    error.value = true
+  } finally {
+    loading.value = false
+  }
+}
+
+onMounted(() => {
+  fetchWeather()
 })
 
 const date = computed(() => w.value ? new Date(w.value.location.localtime).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' }) : '')
@@ -45,8 +69,6 @@ const hours = computed(() => w.value ? w.value.forecast.forecastday[0].hour.filt
 </script>
 
 <style scoped>
-
-
 .bg {
   position: fixed;
   inset: 0;
