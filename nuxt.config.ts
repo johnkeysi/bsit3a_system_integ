@@ -6,6 +6,13 @@ export default defineNuxtConfig({
   build: { transpile: ['vuetify'] },
   css: ['leaflet/dist/leaflet.css'],
   
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
+  
   vite: {
     plugins: [vuetify({ autoImport: true })],
     vue: { template: { transformAssetUrls } },
